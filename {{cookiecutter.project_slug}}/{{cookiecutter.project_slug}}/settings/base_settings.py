@@ -35,12 +35,12 @@ INSTALLED_APPS = [
 
 
     'import_export',
-    {% if cookiecutter.install_rq == "y" %}
+{% if cookiecutter.install_rq == "y" %}
     'django_rq',
     'rq_scheduler',
     'django_redis',
-    {% endif %}
-    {% if cookiecutter.install_wagtail == "y" %}
+{% endif %}
+{% if cookiecutter.install_wagtail == "y" %}
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
-    {% endif %}
+{% endif %}
 ]
 
 MIDDLEWARE = [
@@ -70,7 +70,7 @@ MIDDLEWARE = [
     '{{cookiecutter.project_slug}}.contrib.request.global_middleware',
 {% if cookiecutter.install_wagtail == "y" %}
     'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',{% endif %}
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 {% endif %}
 ]  # List[str]
 
