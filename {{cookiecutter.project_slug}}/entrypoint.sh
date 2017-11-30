@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+set -e
+set -u
+set -x
+set -o pipefail
+
 echo "Launching Entrypoint"
 if [[ ! -v DJANGO_SETTINGS_MODULE ]]; then
     export DJANGO_SETTINGS_MODULE="{{cookiecutter.project_slug}}.settings.prod"
@@ -13,7 +18,6 @@ fi
 #  rm /tmp/env_config
 #}
 
-
 if [[ $# -eq 0 ]]; then
   #inject_env
     exit 0
@@ -26,16 +30,21 @@ else
     python manage.py collectstatic --noinput --clear
     uwsgi --ini conf/uwsgi.conf
   elif  [[ $1 == "test" ]]; then
-    echo "Test: Using $MYSQL_DATABASE with user $DB_USER on host $DB_HOST"
     export DJANGO_SETTINGS_MODULE="{{cookiecutter.project_slug}}.settings.test"
     export DJANGO_LOG_LEVEL="WARNING"
+
+    echo "Validate nginx config"
     service nginx start
+
     pip install -r {{cookiecutter.project_slug}}/requirements/test.txt
+    echo "Checking for missing migrations"
+    python manage.py makemigrations --check --dry-run
+
     python manage.py migrate
     rm -rf ./.static/
     python manage.py collectstatic --noinput --clear
+
     coverage run --source='{{cookiecutter.project_slug}}/' manage.py test
-    rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
     coverage report
     coverage html -d ./coverage
   elif  [[ $1 == manage* ]]; then
