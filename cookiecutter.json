@@ -11,5 +11,6 @@
   "install_wagtail": ["n", "y"],
   "install_allauth": ["n", "y"],
   "install_rq": ["n", "y"],
-  "install_graypy_logging": ["n", "y"]
+  "install_graypy_logging": ["n", "y"],
+  "install_behave_test": ["n", "y"]
 }

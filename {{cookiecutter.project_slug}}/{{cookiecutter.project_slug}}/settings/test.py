@@ -27,6 +27,12 @@ DATABASES = {
 }
 {% endif %}
 
+INSTALLED_APPS += [
+{%- if cookiecutter.install_behave_test == "y" %}
+    'behave_django',
+{%- endif %}
+]
+
 ALLOWED_HOSTS = ["127.0.0.1"]
 
 SECRET_KEY = "TESTSECRETKEY"
