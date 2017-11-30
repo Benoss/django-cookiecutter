@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 
+"""
+For more information on this file, see
+https://docs.djangoproject.com/en/1.11/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/1.11/ref/settings/
+"""
+
 import os
 import re
-from collections import OrderedDict
 
 from django.template import base
 
@@ -107,7 +114,7 @@ AUTHENTICATION_BACKENDS = (
 
 
 # Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -118,7 +125,7 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -137,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
+# https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -147,7 +154,7 @@ USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
 
