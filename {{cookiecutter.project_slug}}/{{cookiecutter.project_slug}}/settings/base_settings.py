@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import re
+from typing import List
 
 from django.template import base
 
@@ -40,14 +41,15 @@ INSTALLED_APPS = [
 {% endif %}
     '{{cookiecutter.project_slug}}.apps.home',
 
-
     'import_export',
-{% if cookiecutter.install_rq == "y" %}
+{%- if cookiecutter.install_rq == "y" %}
+
     'django_rq',
     'rq_scheduler',
     'django_redis',
-{% endif %}
-{% if cookiecutter.install_wagtail == "y" %}
+{%- endif %}
+{%- if cookiecutter.install_wagtail == "y" %}
+
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -62,7 +64,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
-{% endif %}
+{%- endif %}
 ]
 
 MIDDLEWARE = [
