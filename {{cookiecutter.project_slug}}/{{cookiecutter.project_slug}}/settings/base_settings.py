@@ -68,10 +68,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     '{{cookiecutter.project_slug}}.contrib.request.global_middleware',
-    {% if cookiecutter.install_wagtail == "y" %}
+{% if cookiecutter.install_wagtail == "y" %}
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',{% endif %}
-
+{% endif %}
 ]  # List[str]
 
 ROOT_URLCONF = '{{cookiecutter.project_slug}}.urls'
