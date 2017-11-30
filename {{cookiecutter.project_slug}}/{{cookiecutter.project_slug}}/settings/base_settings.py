@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 {% endif %}
-    '{{cookiecutter.project_slug}}.apps.home',
+    '{{cookiecutter.project_slug}}.apps.home.apps.HomeConfig',
 
     'import_export',
 {%- if cookiecutter.install_rq == "y" %}
