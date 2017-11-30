@@ -53,7 +53,7 @@ DATABASES = {
 }
 ```
 
-{% if cookiecutter.install_allauth %}
+{% if cookiecutter.install_allauth == "y" %}
 ## Social login in dev
 
 Get the OAuth clientid/secret for the relevant app and add the following to local.py before running `python manage.py init_data`

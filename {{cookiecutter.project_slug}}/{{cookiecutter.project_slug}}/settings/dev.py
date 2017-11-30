@@ -20,7 +20,7 @@ MIDDLEWARE[:0] = ['debug_toolbar.middleware.DebugToolbarMiddleware',]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 INTERNAL_IPS = ['127.0.0.1', 'localhost']
-{% if cookiecutter.install_rq %}
+{% if cookiecutter.install_rq == "y" %}
 CACHES = {
     'default': {
         'BACKEND': '{{cookiecutter.project_slug}}.contrib.fake_redis.FakeRedisCache',
