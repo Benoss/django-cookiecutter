@@ -15,13 +15,20 @@ urlpatterns = [
     url(r'^healthcheck/', health_check),
     url(r'^admin/', admin.site.urls),
     url(r'^home/', home.urls),
-    {% if cookiecutter.install_wagtail == "y" %}
+{%- if cookiecutter.install_wagtail == "y" %}
     url(r'^cms/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),{% endif %}
-{% if cookiecutter.install_allauth == "y" %}
-    url(r'^accounts/', include('allauth.urls')),{% endif %}
-{% if cookiecutter.install_rq == "y" %}
-    url(r'^django-rq/', include('django_rq.urls')),{% endif %}
+    url(r'^documents/', include(wagtaildocs_urls)),
+{%- endif %}
+{%- if cookiecutter.install_allauth == "y" %}
+
+    url(r'^accounts/', include('allauth.socialaccount.providers.google.urls')),
+    url(r'^accounts/', include('allauth.socialaccount.providers.facebook.urls')),
+
+    url(r'^auth/', myauth.urls),
+{%- endif %}
+{%- if cookiecutter.install_rq == "y" %}
+    url(r'^django-rq/', include('django_rq.urls')),
+{%- endif %}
 ]
 
 if settings.DEBUG:  # pragma: no cover
