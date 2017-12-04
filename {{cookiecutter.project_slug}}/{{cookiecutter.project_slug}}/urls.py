@@ -9,6 +9,9 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls{% endif %}
 
 from .apps.home.urls import home
+{%- if cookiecutter.install_allauth == "y" %}
+from .apps.myauth.urls import myauth
+{%- endif %}
 from .contrib.health_check import health_check
 
 urlpatterns = [
