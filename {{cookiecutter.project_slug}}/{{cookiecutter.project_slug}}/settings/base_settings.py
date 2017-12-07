@@ -254,7 +254,9 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_ADAPTER = "{{cookiecutter.project_slug}}.apps.myauth.adapters.AccountAdapter"
 
 LOGIN_URL = 'account_login'
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'profile:edit'
+LOGOUT_REDIRECT_URL = 'account_login'
 {% endif %}

@@ -24,6 +24,7 @@ urlpatterns = [
 {%- endif %}
 {%- if cookiecutter.install_allauth == "y" %}
 
+    # todo - move to oauth/
     url(r'^accounts/', include('allauth.socialaccount.providers.google.urls')),
     url(r'^accounts/', include('allauth.socialaccount.providers.facebook.urls')),
 
@@ -34,7 +35,7 @@ urlpatterns = [
 {%- endif %}
 ]
 
-if settings.DEBUG:  # pragma: no cover
+if settings.DEBUG and getattr(settings, "USE_DEBUG_TOOLBAR", settings.DEBUG):  # pragma: no cover
     import debug_toolbar
     from django.conf.urls.static import static
 
