@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 {%- if cookiecutter.install_allauth == "y" %}
     '{{cookiecutter.project_slug}}.apps.myauth',
 {%- endif %}
+    '{{cookiecutter.project_slug}}.apps.profile.apps.ProfileConfig',
 
     'import_export',
 {%- if cookiecutter.install_rq == "y" %}
@@ -81,6 +82,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     '{{cookiecutter.project_slug}}.contrib.request.global_middleware',
+    '{{cookiecutter.project_slug}}.apps.profile.middleware.ProfileMiddleware',
 {% if cookiecutter.install_wagtail == "y" %}
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
