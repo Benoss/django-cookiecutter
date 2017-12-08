@@ -2,7 +2,7 @@ from pathlib import Path
 import shutil
 
 install_allauth = "{{ cookiecutter.install_allauth }}" == "y"
-install_behave = "{{ cookiecutter.install_behave }}" == "y"
+install_behave_test = "{{ cookiecutter.install_behave_test }}" == "y"
 
 base_dir = Path()
 project_dir = Path(base_dir, "{{ cookiecutter.project_slug }}")
@@ -29,7 +29,7 @@ if not install_allauth:
     ]:
         delete(path)
 
-if not install_allauth or not install_behave:
+if not install_allauth or not install_behave_test:
     for path in [
         Path(base_dir, "features"),
     ]:
