@@ -3,6 +3,7 @@
 cwd=$(pwd)
 
 export DJANGO_SETTINGS_MODULE="project_name.settings.test"
+export DATABASE_VENDOR="sqlite"
 export DJANGO_LOG_LEVEL="WARNING"
 
 rm -rf ./tmp/
