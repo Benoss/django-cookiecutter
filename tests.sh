@@ -26,3 +26,4 @@ pip install -r requirements_dev.txt --upgrade
 ./manage.py migrate
 ./manage.py init_data
 ./manage.py test
+./manage.py behave
