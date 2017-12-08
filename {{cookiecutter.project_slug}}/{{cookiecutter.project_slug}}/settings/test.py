@@ -11,6 +11,8 @@ DATABASE_VENDOR = os.environ.get('DATABASE_VENDOR', 'postgresql')
 {%- endif %}
 USE_DEBUG_TOOLBAR = False
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 {% if cookiecutter.database_type == "mysql" %}
 if DATABASE_VENDOR == 'mysql':
     DATABASES = {
