@@ -21,7 +21,9 @@ urlpatterns = [
     url(r'^admin/django-rq/', include('django_rq.urls')),
 {%- endif %}
     url(r'^admin/', admin.site.urls),
+{%- if cookiecutter.install_allauth == "y" %}
     url(r'^', profile.urls),
+{%- endif %}
     url(r'^home/', home.urls),
 {%- if cookiecutter.install_wagtail == "y" %}
     url(r'^cms/', include(wagtailadmin_urls)),

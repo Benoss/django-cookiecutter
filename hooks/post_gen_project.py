@@ -23,6 +23,7 @@ def delete(path):
 if not install_allauth:
     for path in [
         Path(apps_dir, "myauth"),
+        Path(apps_dir, "profile"),
         Path(project_sass_dir, "my_auth.scss"),
     ]:
         delete(path)
