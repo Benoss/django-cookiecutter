@@ -2,6 +2,9 @@
 
 cwd=$(pwd)
 
+export DJANGO_SETTINGS_MODULE="project_name.settings.test"
+export DJANGO_LOG_LEVEL="WARNING"
+
 rm -rf ./tmp/
 cookiecutter --no-input --output-dir="./tmp/" .
 cd tmp
