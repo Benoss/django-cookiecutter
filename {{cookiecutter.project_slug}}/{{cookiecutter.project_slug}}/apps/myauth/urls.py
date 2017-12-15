@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
-from django.conf.urls import url
+
+from django.conf.urls import include, url
 from django.contrib.auth import views as auth_views
 
 from . import views
@@ -26,6 +26,9 @@ class AuthApp(object):
             url(r"^password/reset/done/$", views.MyPasswordResetDoneView.as_view(), name="account_reset_password_done"),
             url(r'^password/reset/key/(?P<uidb36>[0-9A-Za-z]+)-(?P<key>.+)/$', views.MyPasswordResetFromKeyView.as_view(), name='account_reset_password_from_key'),
             url(r"^password/reset/key/done/$", views.MyPasswordResetFromKeyDoneView.as_view(), name="account_reset_password_from_key_done"),
+
+            url(r'^accounts/', include('allauth.socialaccount.providers.google.urls')),
+            url(r'^accounts/', include('allauth.socialaccount.providers.facebook.urls')),
         ]
 
         return urlpatterns
