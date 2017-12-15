@@ -4,8 +4,8 @@
 set -e
 # -u exit on undefined variables
 set -u
-# -x print command before running
-set -x
+# -x print command before running (note that enabling this makes the gitlab test fail emails less readable)
+#set -x
 # bubble up the non 0 on pipes
 set -o pipefail
 
@@ -30,6 +30,9 @@ else
    exit 0
   elif [[ $1 == "prod" ]]; then
     echo "Webserver: Executing $DJANGO_SETTINGS_MODULE"
+    # If you want to mount a folder for nginx to read (media or logs) 
+    # you need to set the uid to nginx from inside the container
+    # chown nginx:nginx .media/
     service nginx start
     python manage.py collectstatic --noinput --clear
     uwsgi --ini conf/uwsgi.conf
