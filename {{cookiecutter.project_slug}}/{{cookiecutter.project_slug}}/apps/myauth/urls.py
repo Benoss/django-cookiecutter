@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 import logging
-# Get an instance of a logger
+
 logger = logging.getLogger(__name__)
 
 
@@ -18,7 +18,7 @@ class AuthApp(object):
             url(r'^login/$', views.MyLoginView.as_view(), {'template_name': 'login.html'}, name='account_login'),
             url(r'^logout/$', auth_views.logout, name='account_logout'),
             url(r'^register/$', views.MySignupView.as_view(), {'template_name': 'register.html'}, name='account_signup'),
-            url(r'^email/change/$', views.MyEmailChangeView.as_view(), name='email_change'),
+            url(r'^email/change/$', views.MyEmailView.as_view(), name='account_email'),
             url(r"^email/confirm/(?P<key>[-:\w]+)/$", views.MyConfirmEmailView.as_view(), name="account_confirm_email"),
             url(r'^password/change/$', views.MyPasswordChangeView.as_view(), name='account_change_password'),
             url(r'^password/set/$', views.MyPasswordSetView.as_view(), name='password_set'),
