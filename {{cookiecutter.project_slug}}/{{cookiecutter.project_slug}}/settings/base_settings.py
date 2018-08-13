@@ -83,9 +83,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 
     "{{cookiecutter.project_slug}}.contrib.request.global_middleware",
-{%- if cookiecutter.install_allauth == "y" %}
-    "{{cookiecutter.project_slug}}.apps.profile.middleware.ProfileMiddleware",
-{%- endif %}
+
 {% if cookiecutter.install_wagtail == "y" %}
     "wagtail.core.middleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
