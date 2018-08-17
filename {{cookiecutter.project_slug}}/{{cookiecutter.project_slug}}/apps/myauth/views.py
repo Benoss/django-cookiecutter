@@ -1,4 +1,5 @@
 import logging
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from allauth.account import views as allauth_views
 from django.core.urlresolvers import reverse_lazy
@@ -16,7 +17,7 @@ class MyLoginView(allauth_views.LoginView):
     success_url = reverse_lazy("profile:edit")
 
 
-class MyEmailView(allauth_views.EmailView):
+class MyEmailView(LoginRequiredMixin, allauth_views.EmailView):
     template_name = "email.html"
     # success_url = reverse_lazy("profile:edit")
 
@@ -25,12 +26,12 @@ class MyConfirmEmailView(allauth_views.ConfirmEmailView):
     success_url = reverse_lazy("profile:edit")
 
 
-class MyPasswordChangeView(allauth_views.PasswordChangeView):
+class MyPasswordChangeView(LoginRequiredMixin, allauth_views.PasswordChangeView):
     template_name = "password_change.html"
     success_url = reverse_lazy("profile:edit")
 
 
-class MyPasswordSetView(allauth_views.PasswordSetView):
+class MyPasswordSetView(LoginRequiredMixin, allauth_views.PasswordSetView):
     template_name = "password_set.html"
     success_url = reverse_lazy("core_app:home-page")
 
